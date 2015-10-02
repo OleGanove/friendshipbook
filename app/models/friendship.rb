@@ -5,6 +5,10 @@ class Friendship < ActiveRecord::Base
   validates :user_id, presence: true
   validates :friend_id, presence: true
 
+  scope :accepted, -> { where(status: :accepted) } # unsure whether this works
+  scope :pending,  -> { where(status: :pending).order("created_at") }
+  scope :requested,  -> { where(status: :request).order("created_at") }
+
   # Return true if users are (possibly pending) friends.
 
   def self.exists?(user, friend)
@@ -15,7 +19,7 @@ class Friendship < ActiveRecord::Base
   
   def self.request(user, friend)
   	unless user == friend || Friendship.exists?(user, friend)
-  	  # durch transaction werden beide creates ausgeführt oder keins
+  	  # Because of transaction both "create"s are called simultaneously
   	  transaction do
   	  	# We don't need to write :user_id = > user.id etc. 
   	  	# Rails knows to look at IDs 

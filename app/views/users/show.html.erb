@@ -15,3 +15,24 @@
 	  </li>
 	</ul>
 <% end %>
+
+<h1>My friends</h1>
+<% @user.friends.each do |friend| %>
+  <ul>
+    <li><%= friend.email %></li>
+  </ul>
+<% end %>
+
+<h1>My requested friends</h1>
+<% @user.requested_friends.each do |friend| %>
+  <ul>
+    <li><%= friend.email %></li>
+  </ul>
+<% end %>
+
+<h1>My pending friends</h1>
+<% @user.pending_friends.each do |friend| %>
+  <ul>
+    <li><%= friend.email %></li>
+  </ul>
+<% end %>

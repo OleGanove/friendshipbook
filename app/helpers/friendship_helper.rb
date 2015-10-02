@@ -7,7 +7,7 @@ module FriendshipHelper
   	when 'request'
   	  "#{friend.email} would like to be your friend."
   	when 'pending'
-  	  "#You have request friendship from #{friend.email}."
+  	  "You have request friendship from #{friend.email}."
   	when 'accepted'
   	  "#{friend.email} ist your friend."
   	end
