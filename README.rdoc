@@ -1,28 +1,9 @@
-== README
+== Friendship-Book
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is a toying app to learn how to create mutual friendships.
 
-Things you may want to cover:
+* A user (e.g. Paul) is able to request a friendship with another user (potential friend Peter)
+* Paul has a pending friendship, Peter has a requested friendship
+* When Peter accepts friendship request, the status changes to "accepted", if he declines, the pending/requested friendship is deleted.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Based on Railsspace book: I am trying to have two "friendships" per request (one pending and one requested)
