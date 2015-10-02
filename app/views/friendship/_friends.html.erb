@@ -1,0 +1,36 @@
+<table>
+  <tr>
+    <th><%= pluralize(@user.friends.count, "friend") %></th>
+  </tr>
+
+  <% @user.friends.each do |friend| %>
+    <tr>
+      <td><%= link_to friend.email, user_path(friend) %></td>
+      <td><%= link_to "Delete", '#', :data => { confirm: "Are you sure?" } %></td> <!-- We need a destroy action -->
+    </tr>
+  <% end %>
+
+  <% unless @user.requested_friends.empty? %>
+  	<tr>
+  	  <th><%= pluralize(@user.requested_friends.count, "requested friend") %></th>
+  	</tr>
+  	<% @user.requested_friends.each do |requester| %>
+  	  <tr>
+  	    <td><%= link_to requester.email, user_path(requester) %></td>
+  	    <td><%= link_to "Accept", '#' %><%= link_to "Decline", '#' %></td><!-- We need a accept/decline action -->
+  	  </tr>
+  	<% end %>
+  <% end %>
+
+  <% unless @user.pending_friends.empty? %>
+    <tr>
+      <th><%= pluralize(@user.pending_friends.count, "pending friend") %></th>
+    </tr>
+    <% @user.pending_friends.each do |pending_friend| %>
+      <tr>
+        <td><%= link_to pending_friend.email, user_path(pending_friend) %></td>
+        <td><%= link_to "Cancel request", '#' %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

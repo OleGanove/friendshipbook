@@ -6,9 +6,11 @@
 	  <li><%= friendship_status(current_user, @user) %>
 	    <% unless Friendship.exists?(current_user, @user) %>
 	      <%= link_to "Request friendship with #{@user.email}", 
-
-	     
-	        { :controller => "friendship", :action => "create", :id => @user.id}, :method => :post, :data => {:confirm => "Send friend request to #{@user.email}?" } %>
+	        		   { :controller => "friendship", 
+	        			 :action => "create", 
+	        			 :id => @user.id}, 
+	        			 :method => :post, 
+	        			 :data => {:confirm => "Send friend request to #{@user.email}?" } %>
 
 
 	    <% end %>
@@ -16,23 +18,5 @@
 	</ul>
 <% end %>
 
-<h1>My friends</h1>
-<% @user.friends.each do |friend| %>
-  <ul>
-    <li><%= friend.email %></li>
-  </ul>
-<% end %>
+<%= render "friendship/friends" %>
 
-<h1>My requested friends</h1>
-<% @user.requested_friends.each do |friend| %>
-  <ul>
-    <li><%= friend.email %></li>
-  </ul>
-<% end %>
-
-<h1>My pending friends</h1>
-<% @user.pending_friends.each do |friend| %>
-  <ul>
-    <li><%= friend.email %></li>
-  </ul>
-<% end %>
